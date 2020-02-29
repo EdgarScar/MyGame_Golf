@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sub_category: one
+  user: one
+  rent: false
+  description: MyText
+  brand: MyString
+  model: MyString
+  age: MyString
+  condition: 1
+  price: 9.99
+
+two:
+  sub_category: two
+  user: two
+  rent: false
+  description: MyText
+  brand: MyString
+  model: MyString
+  age: MyString
+  condition: 1
+  price: 9.99
