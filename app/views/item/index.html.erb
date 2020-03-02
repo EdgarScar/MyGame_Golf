@@ -1,0 +1,21 @@
+<h2>Welcome to the Shop</h2>
+
+<%= link_to "Post an Item", new_item_path %>
+<br/>
+<br/>
+<table>
+  <tr>
+    <th>Image</th>
+    <th>Description</th>
+    <th>Details</th>
+  </tr>
+  <% @item.each do |item| %>
+    <tr>
+      <td>8 Iron club Image</td>
+      <td><%= "#{item.sub_category} #{item.description} #{item.brand} #{item.model} #{item.age} #{item.condition} "%></td>
+      <td><%= "#{item.price} #{item.user}"%></td>
+    </tr>
+  <%end%>
+
+
+</table>

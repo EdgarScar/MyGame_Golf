@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Category.destroy_all
 SubCategory.destroy_all
+User.destroy_all
+Item.destroy_all
 
 bag = Category.create({name: 'Bags'})
 accessory = SubCategory.create({name: 'Accessory', category: bag})
@@ -31,3 +33,7 @@ clothing = Category.create({name: 'Clothing'})
 glove = SubCategory.create({name: 'Gloves', category: clothing})
 hat = SubCategory.create({name: 'Hats', category: equipment})
 shoe = SubCategory.create({name: 'Shoes', category: equipment})
+
+user = User.create({email: 'johnny@gmail.com', encrypted_password: "123456", first_name: 'Johnny', last_name: 'Golf', display_name: "JG"})
+
+item_1 = Item.create({sub_category: driver, description: "Golf Clubs"})

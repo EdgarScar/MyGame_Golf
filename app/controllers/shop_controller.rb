@@ -1,8 +1,5 @@
 class ShopController < ApplicationController
-    
-    def index
-    end 
 
+    #Requires deletion - Replaced with Items controller 
 
-    
 end
