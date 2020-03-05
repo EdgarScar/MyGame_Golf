@@ -33,6 +33,7 @@ class ItemController < ApplicationController
     #Condition does not accept the integer for some reason
     @item.condition = Item.conditions[params[:item][:conditon]]
     @item.price = params[:item][:price]
+    @item.picture.attach(params[:item][:picture])
 
     if @item.save
       redirect_to items_path

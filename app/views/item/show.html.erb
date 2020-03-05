@@ -7,7 +7,7 @@
     <th>Details</th>
   </tr>
     <tr>
-      <td>Image</td>
+      <td><%= image_tag @item.picture, class: 'img-thumbnail box', width: 120 if @item.picture.attached? %></td>
       <td><%= "#{@item.sub_category.name} #{@item.description} #{@item.brand} #{@item.model} #{@item.age} #{@item.condition} "%></td>
       <td><%= "#{number_to_currency @item.price} #{@item.user.email}"%></td>
       <% if @item.user == current_user %>
