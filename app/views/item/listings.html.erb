@@ -9,7 +9,7 @@
   <% @item.each do |item| %>
     <tr>
       <% if item.user == current_user%>
-        <td>Image</td>
+        <td><%= image_tag item.picture, class: 'img-thumbnail box', width: 120 if item.picture.attached? %></td>
         <td><%= "#{item.sub_category.name} #{item.description} #{item.brand} #{item.model} #{item.age} #{item.condition} "%></td>
         <td><%= "#{item.price} #{item.user.email}"%></td>
         <td><%= link_to "Show Details", item_path(item.id) %></td>

@@ -36,6 +36,11 @@
     <%= f.text_field :last_name %>
   </div>
 
+  <div class="field">
+  <%= f.label(:picture, "Profile Photo:") %>
+  <%= f.file_field :picture, accept: 'image/png, image/gif, image/png, image/jpg' %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
