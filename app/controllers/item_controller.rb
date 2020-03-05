@@ -35,7 +35,7 @@ class ItemController < ApplicationController
     @item.price = params[:item][:price]
     @item.picture.attach(params[:item][:picture])
 
-    if @item.save
+    if @item.valid? && @item.save
       redirect_to items_path
     else
       render :new

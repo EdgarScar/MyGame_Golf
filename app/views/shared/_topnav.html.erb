@@ -1,11 +1,19 @@
-<% if user_signed_in? %>
-  <p>
-    <%= link_to "Logout", destroy_user_session_path, method: "delete" %> | 
-    <%= current_user.email %>
-  </p>
-<% else %>
-  <p><%= link_to "Login", new_user_session_path %>
-  <%= link_to "Sign Up", new_user_registration_path %>
-  </p>
-<% end %>
+<header class="top-nav row align-items-end">
+  <div class="col text-right">
+    <% if user_signed_in? %>
+      <p>
+        <%= link_to "Logout", destroy_user_session_path, method: "delete" %> | 
+        <%= current_user.display_name %>
+        <%= image_tag current_user.picture, class: 'img-thumbnail box profile', width: 200 if current_user.picture.attached? %>
+      </p>
+    <% else %>
+      <p>
+        <%= link_to "Login", new_user_session_path %>
+        <%= link_to "Sign Up", new_user_registration_path %>
+      </p>
+    <% end %>
+  </div>
+</header>
+
+
 
