@@ -14,3 +14,13 @@
  */
 
  @import "bootstrap";
+
+body {
+  max-height: 100vh;
+  background-image: url(image_path('golfhole.jpeg'));
+  background-repeat: repeat;
+  background-position: right bottom;
+  background-attachment: fixed;
+ }
+
+ 
