@@ -1,8 +1,5 @@
-<h2>Welcome to the Shop</h2>
+<h2>My Current Listings</h2>
 
-<p><%= link_to "Post an Item", new_item_path %>  |  <%= link_to "View My Listings", listings_path %>
-<br/>
-<br/>
 <table>
   <tr>
     <th>Image</th>
@@ -10,16 +7,14 @@
     <th>Details</th>
   </tr>
   <% @item.each do |item| %>
-    <div class="container text-center">
-      <tr>
+    <tr>
+      <% if item.user == current_user%>
         <td>Image</td>
         <td><%= "#{item.sub_category.name} #{item.description} #{item.brand} #{item.model} #{item.age} #{item.condition} "%></td>
         <td><%= "#{item.price} #{item.user.email}"%></td>
         <td><%= link_to "Show Details", item_path(item.id) %></td>
-      </tr>
-    </div>
+    </tr>
   <%end%>
-
-
+<%end%>
 
 </table>

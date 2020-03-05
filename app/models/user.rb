@@ -7,5 +7,4 @@ class User < ApplicationRecord
   has_many :orders
   has_many :items
 
-  attr_accessor :email, :password, :password_confirmation, :remember_me
 end

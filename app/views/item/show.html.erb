@@ -1,0 +1,22 @@
+<h2>Show Details</h2>
+
+<table>
+  <tr>
+    <th>Image</th>
+    <th>Description</th>
+    <th>Details</th>
+  </tr>
+    <tr>
+      <td>Image</td>
+      <td><%= "#{@item.sub_category.name} #{@item.description} #{@item.brand} #{@item.model} #{@item.age} #{@item.condition} "%></td>
+      <td><%= "#{number_to_currency @item.price} #{@item.user.email}"%></td>
+      <% if @item.user == current_user %>
+        <td><%= link_to 'Remove Listing', destroy_item_path(@item.id), method: "delete" %></td>
+      <% elsif @item.rent == true %>
+        <td><%= link_to "Rent Item", new_order_path(item_id: @item.id), class: "btn btn-info"%></td>
+      <% else %>
+        <td><%= link_to "Buy Item", new_order_path(item_id: @item.id), class: "btn btn-info"%></td>
+      <% end %>
+    </tr>
+
+</table>
