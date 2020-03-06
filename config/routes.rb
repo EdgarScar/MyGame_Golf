@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   }
 
   #Home directory created for devise purposes
-  root to: "home#index"
+  root to: "home#index", as: "home"
 
   #Show all items for sale/rent in the shop but use Items Controller
   get "/item", to: "item#index", as: "items"

@@ -16,15 +16,16 @@
  @import "bootstrap";
 
 body {
-  max-height: 100vh;
-  background-image: url(image_path('golfhole.jpeg'));
-  background-repeat: repeat;
-  background-position: right bottom;
-  background-attachment: fixed;
+  background-image: url(image_path('ball.jpeg'));
+  background-position: center;
+  background-size: auto;
+  width: 100%;
+  height: 100%;
  }
 
 .container {
   background-color: white;
+  opacity: 80%;
 }
 
 .profile {
@@ -32,5 +33,36 @@ body {
   height:80px;
   width:80px;
 }
+
+ .navbar-brand h1 {
+   color: green;
+   font-family: "Chango"; 
+ }
+
+ .btn-success {
+   font-family: "Chango";
+ }
+
+ .flexbox {
+   display: flex;
+   justify-content: space-around;
+ }
+
+ .shop-align {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+ }
+
+ .shop-display {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+ }
+
+ .img-thumbnail {
+  height: 300px; 
+  width: 300px,
+ }
 
  

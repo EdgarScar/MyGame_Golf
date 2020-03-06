@@ -1,35 +1,31 @@
-<h2>Welcome to the Shop</h2>
+<div class="shop-align">
+  <div class="shop-align">
+    <br />
+    <h2>Welcome to the Shop</h2>
+    <p><%= link_to "Post an Item", new_item_path %>  |  <%= link_to "View My Listings", listings_path %>
+    <br/>
+    <br/>
+    <h4>Search by Category</h4>
+      <%= form_tag(items_path, method: :get) do %>
+        <%= select_tag "sub_categories", options_from_collection_for_select(@sub_categories, "id", "name"), :prompt => 'Select Category' %>
+        <%= submit_tag ("Search") %>
+      <% end %>
+  </div>
+  <br />
+  <br />
+  <div class="shop-display">
+    <% @item.each do |item| %>
+      <div class="col-md-4">
+        <%= image_tag item.picture, class: 'img-thumbnail box' if item.picture.attached? %>
+        <p><%= "#{item.sub_category.name} #{item.description} #{item.brand} #{item.model} #{item.age} #{item.condition} "%></p>
+        <p><%= "#{number_to_currency item.price}"%></p>
+        <p><%= "#{item.user.email}"%></p>
+        <%= link_to "Show Details", item_path(item.id) %>
+      </div>
+    <%end%>
+  </div>
 
-<p><%= link_to "Post an Item", new_item_path %>  |  <%= link_to "View My Listings", listings_path %>
-<br/>
-<br/>
-
-<h4>Search by Category:</h4>
-  <%= form_tag(items_path, method: :get) do %>
-    <%= text_field_tag(:search, params[:search]) %>
-    <%= submit_tag ("Search") %>
-  <% end %>
-
-<table>
-  <tr>
-    <th>Image</th>
-    <th>Description</th>
-    <th>Details</th>
-    <th>Seller</th>
-  </tr>
-
-  <% @item.each do |item| %>
-    <div class="container text-center">
-      <tr>
-        <td><%= image_tag item.picture, class: 'img-thumbnail box', width: 120 if item.picture.attached? %></td>
-        <td><%= "#{item.sub_category.name} #{item.description} #{item.brand} #{item.model} #{item.age} #{item.condition} "%></td>
-        <td><%= "#{number_to_currency item.price}"%></td>
-        <td><%= "#{item.user.email}"%></td>
-        <td><%= link_to "Show Details", item_path(item.id) %></td>
-      </tr>
-    </div>
-  <%end%>
+</div>
 
 
 
-</table>
