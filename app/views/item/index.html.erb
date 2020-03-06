@@ -3,6 +3,13 @@
 <p><%= link_to "Post an Item", new_item_path %>  |  <%= link_to "View My Listings", listings_path %>
 <br/>
 <br/>
+
+<h4>Search by Category:</h4>
+  <%= form_tag(items_path, method: :get) do %>
+    <%= text_field_tag(:search, params[:search]) %>
+    <%= submit_tag ("Search") %>
+  <% end %>
+
 <table>
   <tr>
     <th>Image</th>
@@ -10,6 +17,7 @@
     <th>Details</th>
     <th>Seller</th>
   </tr>
+
   <% @item.each do |item| %>
     <div class="container text-center">
       <tr>

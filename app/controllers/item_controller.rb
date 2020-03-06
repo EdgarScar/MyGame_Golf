@@ -2,7 +2,7 @@ class ItemController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @item = Item.all
+    @item = Item.search(params[:search])
   end 
 
   def new
@@ -11,15 +11,12 @@ class ItemController < ApplicationController
     @categories = Category.all.map{ |category| [category.name, category.id]}
     #Variable for all sub_categories to be selected in form 
     @sub_categories = SubCategory.all.map{ |sub_category| [sub_category.name, sub_category.id]}
-    
     #Creating labels for enum of :conditon
     @conditions = Item.conditions.map { |item| item }
   end 
 
   def create 
     @item = Item.new()
-    p @item
-    #Stuck on passing the current user's id into the model when saving an item 
     @item.user = current_user
     #Would like the boolean of rent to determine whether to display duration
     @item.rent = params[:item][:rent]
@@ -30,7 +27,6 @@ class ItemController < ApplicationController
     @item.brand = params[:item][:brand]
     @item.model = params[:item][:model]
     @item.age = params[:item][:age]
-    #Condition does not accept the integer for some reason
     @item.condition = Item.conditions[params[:item][:conditon]]
     @item.price = params[:item][:price]
     @item.picture.attach(params[:item][:picture])
@@ -56,5 +52,9 @@ class ItemController < ApplicationController
     redirect_to items_path
   end
 
+  private
+  def item_params
+    params.require(:item).permit(:sub_category_id, :search)
+  end
  
 end

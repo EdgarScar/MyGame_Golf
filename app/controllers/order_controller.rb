@@ -15,6 +15,12 @@ class OrderController < ApplicationController
     )
   end 
 
+  def create 
+    
+
+  end 
+
+
   def complete
   end 
 
