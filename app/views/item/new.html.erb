@@ -1,71 +1,73 @@
-<h1>Create a new Item for sale or rent</h1>
-<div class="container text-center">
-  <div>
-    <%= form_with model: @item, :url => create_item_path do |form| %>
+<div class="shop-align">
+<br/>
+  <h3>Post an item for sale or rent</h3>
+  <div class="container text-center">
+    <div>
+      <%= form_with model: @item, :url => create_item_path do |form| %>
 
+            <%= form.label(:rent, "Are you renting?")%>
+            <%= form.check_box :rent, {}, true, false%>
+            <br/>
+            <br/>
 
-          <%= form.label(:rent, "Are you renting?")%>
-          <%= form.check_box :rent, {}, true, false%>
-          <br/>
-          <br/>
+            <%= form.label :duration %>
+            <%= form.text_field :duration %>
+            <br/>
+            <br/>
 
-          <%= form.label :duration %>
-          <%= form.text_field :duration %>
-          <br/>
-          <br/>
-
-          <%= form.label(:category, "Category: ") %>
-          <%= form.select :category_id, @categories %>
-          <br/>
-          <br/>
-          <%= form.label :sub_category %>
-          <%= form.select :sub_category_id, @sub_categories %>
-          <br/>
-          <br/>
-          <%= form.label :description %>
-          <%= form.text_field :description%>
-          <br/>
-          <br/>
-          <%= form.label :brand %>
-          <%= form.text_field :brand%>
-          <br/>
-          <br/>
-          <%= form.label :model %>
-          <%= form.text_field :model%>
-          <br/>
-          <br/>
-          <%= form.label :age %>
-          <%= form.number_field :age%>
-          <br/>
-          <br/>
-          <%= form.label :condition %>
-          <%= form.select :condition, @conditions %>
-          <br/>
-          <br/>
-          <%= form.label :price %>
-          <%= form.number_field :price %>
-          <br/>
-          <br/>
-          <%= form.label :picture %>
-          <%= form.file_field :picture, accept: 'image/png, image/gif, image/png, image/jpg' %>
-          <br />
-          <br />
-      <%= form.submit "Submit"%>
-    <%end%>
+            <%= form.label(:category, "Category: ") %>
+            <%= form.select :category_id, @categories %>
+            <br/>
+            <br/>
+            <%= form.label :sub_category %>
+            <%= form.select :sub_category_id, @sub_categories %>
+            <br/>
+            <br/>
+            <%= form.label :description %>
+            <%= form.text_field :description%>
+            <br/>
+            <br/>
+            <%= form.label :brand %>
+            <%= form.text_field :brand%>
+            <br/>
+            <br/>
+            <%= form.label :model %>
+            <%= form.text_field :model%>
+            <br/>
+            <br/>
+            <%= form.label :age %>
+            <%= form.number_field :age%>
+            <br/>
+            <br/>
+            <%= form.label :condition %>
+            <%= form.select :condition, @conditions %>
+            <br/>
+            <br/>
+            <%= form.label :price %>
+            <%= form.number_field :price %>
+            <br/>
+            <br/>
+            <%= form.label :picture %>
+            <%= form.file_field :picture, accept: 'image/png, image/gif, image/png, image/jpg' %>
+            <br />
+            <br />
+        <%= form.submit "Submit"%>
+      <%end%>
+    </div>
   </div>
+  <%# <script>
+  document
+    .querySelector("[id='item_category_id']")
+    .addEventListener("change", () => {
+        // var x = document.getElementById("item_sub_category_id")
+        // <% x %>
+        <%# // var option = document.createElement("option"); %>
+        <%# // option.text = "Kiwi"; %>
+        <%# // option.value = "1" %>
+        <%# // x.add(option); %>
+
+        
+
+    <%# }); %>
+  <%# </script> %>
 </div>
-<%# <script>
- document
-   .querySelector("[id='item_category_id']")
-   .addEventListener("change", () => {
-      // var x = document.getElementById("item_sub_category_id")
-      // <% x %>
-      <%# // var option = document.createElement("option"); %>
-      <%# // option.text = "Kiwi"; %>
-      <%# // option.value = "1" %>
-      <%# // x.add(option); %>
-
-      
-
-   <%# }); %>
-<%# </script> %> %>

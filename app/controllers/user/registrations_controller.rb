@@ -15,6 +15,10 @@ class User::RegistrationsController < Devise::RegistrationsController
     @user.picture.attach(params[:user][:picture])
   end
 
+  def after_sign_up_path_for(user)
+    new_address_path
+  end
+
   # GET /resource/edit
   # def edit
   #   super

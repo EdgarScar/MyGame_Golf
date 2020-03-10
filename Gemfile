@@ -71,3 +71,5 @@ gem 'jquery-rails'
 gem "stripe", "~> 5.17"
 
 gem "aws-sdk-s3", "~> 1.60"
+
+gem "httparty", "~> 0.18.0"

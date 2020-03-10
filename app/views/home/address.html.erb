@@ -1,0 +1,37 @@
+<%= form_with model: @address, :url => create_address_path do |form| %>
+
+    <div class="field">
+      <%= form.label(:number, "Street No.")%>
+      <%= form.text_field :number %>
+    </div> 
+
+    <div class="field">
+      <%= form.label(:street, "Street:")%>
+      <%= form.text_field :street %>
+    </div>
+
+    <div class="field">
+      <%= form.label(:city, "City:")%>
+      <%= form.text_field :city %>
+    </div>
+
+    <div class="field">
+      <%= form.label(:state, "State:")%>
+      <%= form.text_field :state %>
+    </div>
+
+    <div class="field">
+      <%= form.label(:country, "Country:")%>
+      <%= form.text_field :country %>
+    </div>
+
+    <div class="field">
+      <%= form.label(:postcode, "Postcode:")%>
+      <%= form.text_field :postcode %>
+    </div>
+    
+    <div class="actions">
+      <%= form.submit "Save Address" %>
+    </div>  
+  
+  <% end %>

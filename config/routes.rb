@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   #Home directory created for devise purposes
   root to: "home#index", as: "home"
 
+  #Add address to User
+  get "/home/address", to: "home#address", as: "new_address"
+  post "/home", to: "home#create", as: "create_address"
+
   #Show all items for sale/rent in the shop but use Items Controller
   get "/item", to: "item#index", as: "items"
 
@@ -30,5 +34,14 @@ Rails.application.routes.draw do
   
   #Add item to an order
   get "/order/:id", to: "order#new", as: "new_order"
+
+  #Display all courses in a list 
+  get "/course", to: "course#index", as: "courses"
+
+  #Display individual course
+  get "/course/:id", to: "course#show", as: "course"
+
+  #Add photo to course
+  patch "/course/:id", to: "course#update", as: "update_course"
 
 end

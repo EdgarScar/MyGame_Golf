@@ -1,0 +1,33 @@
+<br />
+<div><h3>Latest Headlines</h3></div>
+<div class="col-md-6 latest">
+
+  <% @article.each do |hash| %>
+    <% hash.each do |key, value| %> 
+      <% if value.class == String %>
+        <% if value.downcase.include? "golf" %>
+          <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+              <%# <img src="..." class="rounded mr-2" alt="..."> %>
+              <strong class="mr-auto"><%= hash["title"]%></strong>
+              <small><%= hash["publishedAt"] %></h5></small>
+              <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="toast-body"><a href="<%="#{hash["url"]}"%>"><%="#{hash["description"]}"%></a>   </div>
+            </div>
+            <br />
+        <% end %> 
+      <% end %>
+    <% end %> 
+  <% end %>
+</div>
+
+<div class="col-md-6">
+</div>
+    
+
+   
+                
+        

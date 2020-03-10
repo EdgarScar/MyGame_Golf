@@ -16,10 +16,13 @@
   <div class="shop-display">
     <% @item.each do |item| %>
       <div class="col-md-4">
-        <%= image_tag item.picture, class: 'img-thumbnail box' if item.picture.attached? %>
-        <p><%= "#{item.sub_category.name} #{item.description} #{item.brand} #{item.model} #{item.age} #{item.condition} "%></p>
-        <p><%= "#{number_to_currency item.price}"%></p>
-        <p><%= "#{item.user.email}"%></p>
+        <%= link_to item_path(item.id) do %>
+          <%= image_tag item.picture, class: 'shop-item box' if item.picture.attached? %>
+        <% end %>
+        <p><%= "#{item.description}"%></p>
+        <p><%= "Category: #{item.sub_category.name} | #{item.brand} | #{item.model} "%></p>
+         <p><%="Age: #{item.age} | Condition:#{item.condition}"%>
+        <p><%= "Seller: #{item.user.display_name}"%></p>
         <%= link_to "Show Details", item_path(item.id) %>
       </div>
     <%end%>

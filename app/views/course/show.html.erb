@@ -1,0 +1,32 @@
+<div class="shop-align">
+  <div class="shop-align">
+    <br />
+    <h2><%= "#{@course.name}"%></h2>
+  </div>
+  <br />
+  <br />
+      <div>
+        <p><%= image_tag @course.picture, class: 'img-thumbnail box', width: 120 if @course.picture.attached? %></p>
+        <p><%= "#{@course.description} | #{@course.holes}"%></p>
+        <p><%="Length: #{@course.length} | Difficulty:#{@course.difficulty}"%>
+        <p><%= "Price: 18 holes - #{@course.priceeighteen} | 9 holes - #{@course.pricenine}"%></p>
+      </div>
+  </div>
+  <%= link_to "Back to Courses", courses_path %>
+
+
+<%= form_with model: @course, :url => update_course_path do |form| %>
+
+ <div class="field">
+  <%= form.label(:picture, "Course Photo:") %>
+  <%= form.file_field :picture, accept: 'image/png, image/gif, image/png, image/jpg' %>
+  </div>
+
+  <%= form.submit "Submit"%>
+
+<% end %>
+
+</div>
+
+
+

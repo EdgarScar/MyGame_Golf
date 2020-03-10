@@ -11,7 +11,7 @@ class OrderController < ApplicationController
         quantity: 1,
       }],
       success_url: "#{order_complete_url}",
-      cancel_url: "#{root_url}order/failed",
+      cancel_url: "#{home_url}",
     )
   end 
 
