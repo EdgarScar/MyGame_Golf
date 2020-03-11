@@ -43,10 +43,6 @@ class ItemController < ApplicationController
     @item = Item.find(params[:id])
   end 
 
-  def listings
-    @item = Item.all
-  end 
-
   def destroy
     description = Item.find(params[:id]).description
     Item.destroy(params[:id])

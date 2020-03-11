@@ -18,12 +18,20 @@ class HomeController < ApplicationController
 
     def create 
       @address = Address.new()
-      @address.addressable_id = current_user
-      @user.number = params[:user][:number]
-      @user.street = params[:user][:street]
-      @user.suburb = params[:user][:city]
-      @user.state = params[:user][:state]
-      @user.country = params[:user][:country]
-      @user.postcode = params[:user][:postcode]
+      @address.addressable_id = current_user.id
+      @address.number = params[:address][:number]
+      @address.street = params[:address][:street]
+      @address.suburb = params[:address][:city]
+      @address.state = params[:address][:state]
+      @address.country = params[:address][:country]
+      @address.postcode = params[:address][:postcode]
+
+      if @address.valid? && @address.save
+        redirect_to home_path
+      else
+        redirect_to items_path    
+      end 
     end 
+
+
 end

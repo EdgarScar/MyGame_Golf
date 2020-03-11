@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   delete "/item/:id/delete", to: "item#destroy", as: "destroy_item"
 
   #Show listings belonging to current user
-  get "/listings", to: "item#listings", as: "listings"
+  get "/listings", to: "profile#listings", as: "listings"
 
   #Completed order page 
   get "/order/complete", to: "order#complete", as: "order_complete"
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   
   #Add item to an order
   get "/order/:id", to: "order#new", as: "new_order"
-  post "order/item/:id", to: "order#create", as: "create_order"
+  post "order/:id", to: "order#create", as: "create_order"
 
   #Display all courses in a list 
   get "/course", to: "course#index", as: "courses"

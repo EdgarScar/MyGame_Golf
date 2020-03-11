@@ -1,12 +1,13 @@
 <%= render "shared/profilenav" %>
-
-<h1>Course List for <%= current_user.email %> </h1>
+<br />
+<div class="d-flex justify-content-center"><h2>My Courses</h2></div>
+<br />
 <br />
 <ul class="list-unstyled">
   <% @courses.each do |course| %>
-      <li class="media">
+      <li class="media col-sm">
         <%= image_tag course.picture, class: "align-self-start mr-1", size: "250" %>
-        <div class="media-body">
+        <div class="media-body col-sm">
             <h3 class="mt-0 mb-1"><%= "#{course.name}"%></h3>
             USER REVIEW AND RATING
           <div>

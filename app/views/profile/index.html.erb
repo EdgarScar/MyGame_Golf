@@ -1,1 +1,16 @@
 <%= render "shared/profilenav" %>
+<br />
+<div class="d-flex justify-content-center"><h2>My Profile</h2></div>
+<br />
+  <div class="row">
+    <div class="col">
+      <%= image_tag current_user.picture, class:"card-img-top", size: "200" %>
+    </div>
+    <div class="col-6">
+      <%="Name: #{current_user}"%>
+    </div>
+    <div class="col">
+       of 
+    </div>
+  </div>
+  

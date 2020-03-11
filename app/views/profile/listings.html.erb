@@ -1,15 +1,12 @@
-<h2>My Current Listings</h2>
-
+<%= render "shared/profilenav" %>
+<br />
+<div class="d-flex justify-content-center"><h2>My Current Listings</h2></div>
+<br />
 <table>
-  <tr>
-    <th>Image</th>
-    <th>Description</th>
-    <th>Details</th>
-  </tr>
-  <% @item.each do |item| %>
+  <% @items.each do |item| %>
     <tr>
       <% if item.user == current_user%>
-        <td><%= image_tag item.picture, class: 'img-thumbnail box', width: 120 if item.picture.attached? %></td>
+        <td><%= image_tag item.picture, class: "align-self-start mr-1", size: "120" %></td>
         <td><%= "#{item.sub_category.name} #{item.description} #{item.brand} #{item.model} #{item.age} #{item.condition} "%></td>
         <td><%= "#{item.price} #{item.user.email}"%></td>
         <td><%= link_to "Show Details", item_path(item.id) %></td>

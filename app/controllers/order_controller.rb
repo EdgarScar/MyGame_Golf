@@ -19,7 +19,7 @@ class OrderController < ApplicationController
     @order = Order.new
     @order.user = current_user
     @order.item = Item.find(params[:item_id])
-
+    @order.save
   end 
 
 

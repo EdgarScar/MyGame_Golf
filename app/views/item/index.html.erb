@@ -1,33 +1,36 @@
-<div class="shop-align">
-  <div class="shop-align">
+<%= render "shared/marketnav" %>
+
+<div class="align">
     <br />
     <h2>Welcome to the Shop</h2>
-    <p><%= link_to "Post an Item", new_item_path %>  |  <%= link_to "View My Listings", listings_path %>
-    <br/>
-    <br/>
+    <br />
     <h4>Search by Category</h4>
       <%= form_tag(items_path, method: :get) do %>
         <%= select_tag "sub_categories", options_from_collection_for_select(@sub_categories, "id", "name"), :prompt => 'Select Category' %>
         <%= submit_tag ("Search") %>
       <% end %>
-  </div>
   <br />
   <br />
-  <div class="shop-display">
+  <div class="list">
     <% @item.each do |item| %>
-      <div class="col-md-4">
-        <%= link_to item_path(item.id) do %>
-          <%= image_tag item.picture, class: 'shop-item box' if item.picture.attached? %>
-        <% end %>
-        <p><%= "#{item.description}"%></p>
-        <p><%= "Category: #{item.sub_category.name} | #{item.brand} | #{item.model} "%></p>
-         <p><%="Age: #{item.age} | Condition:#{item.condition}"%>
-        <p><%= "Seller: #{item.user.display_name}"%></p>
-        <%= link_to "Show Details", item_path(item.id) %>
+      <div class="d-flex justify-content-center col-md-4">
+        <div class="card" style="width: 18rem;">
+          <%= link_to image_tag(item.picture, class:"card-img-top", size: "250"), item_path(item.id) %>
+          <div class="card-body">
+            <h4 class="card-title"><%= link_to "#{item.description}", item_path(item.id), class: 'link-to-text-color' %></h4>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%= "Category: #{item.sub_category.name}" %></li>
+            <li class="list-group-item"><%= "#{item.brand} - #{item.model}" %></li>
+            <li class="list-group-item"><%= "Age: #{item.age} | Condition:#{item.condition}" %></li>
+            <li class="list-group-item"><%= link_to "Show Details", item_path(item.id) %></li>
+          </ul>
+        </div>
+        <br />
+        <br />
       </div>
     <%end%>
   </div>
-
 </div>
 
 

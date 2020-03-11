@@ -7,6 +7,7 @@
     <%= image_tag @course.picture, class: "align-self-start mr-1", size: "250" %>
     <div class="media-body col-sm">
       <h3 class="mt-0 text-center"><%="    #{@course.name} | #{@course.holes}" %></h3>
+      <br />
       <p><%="    #{@course.description}" %></p>
       <div class="d-flex justify-content-around">
         <div><strong>Length: </strong><%="#{@course.length}" %></div>
