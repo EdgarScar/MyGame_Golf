@@ -14,7 +14,7 @@
         </li>
         <li class="nav-item">
           <% if user_signed_in? %>
-            <%= link_to "Profile", new_user_session_path, class:"btn btn-success btn-lg" %></button>     
+            <%= link_to "Profile", profile_path, class:"btn btn-success btn-lg" %></button>     
           <% else %>
             <%= link_to "Profile", new_user_session_path, class:"btn btn-success btn-lg" %></button>  
           <% end %>   

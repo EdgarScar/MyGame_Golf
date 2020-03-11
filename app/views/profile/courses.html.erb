@@ -1,0 +1,22 @@
+<%= render "shared/profilenav" %>
+
+<h1>Course List for <%= current_user.email %> </h1>
+<br />
+<ul class="list-unstyled">
+  <% @courses.each do |course| %>
+      <li class="media">
+        <%= image_tag course.picture, class: "align-self-start mr-1", size: "250" %>
+        <div class="media-body">
+            <h3 class="mt-0 mb-1"><%= "#{course.name}"%></h3>
+            USER REVIEW AND RATING
+          <div>
+            <%= link_to "Show Course Details", course_path(course.id) %>
+          </div>
+          <div>
+            <%= link_to 'Remove', course, method: "delete"%>
+          </div>   
+        </div>
+      </li>
+      <br />
+  <% end %>
+</ul>

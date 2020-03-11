@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_07_061231) do
+ActiveRecord::Schema.define(version: 2020_03_11_025509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,19 @@ ActiveRecord::Schema.define(version: 2020_03_07_061231) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "profile_courses", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "course_id"
+    t.boolean "played"
+    t.integer "score"
+    t.boolean "rated"
+    t.boolean "reviewed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_profile_courses_on_course_id"
+    t.index ["user_id"], name: "index_profile_courses_on_user_id"
+  end
+
   create_table "sub_categories", force: :cascade do |t|
     t.bigint "category_id"
     t.string "name"
@@ -125,5 +138,7 @@ ActiveRecord::Schema.define(version: 2020_03_07_061231) do
   add_foreign_key "items", "users"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"
+  add_foreign_key "profile_courses", "courses"
+  add_foreign_key "profile_courses", "users"
   add_foreign_key "sub_categories", "categories"
 end

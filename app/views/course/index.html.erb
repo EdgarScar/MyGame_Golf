@@ -1,29 +1,24 @@
 <div class="shop-align">
     <br />
     <h2>Course Catelog</h2>
-    <%# <p><%= link_to "View My Courses", listings_path %> 
     <br/>
-    <br/>
-    <h4>Search</h4>
+    <h4>Search:......</h4>
   <br />
   <br />
   <div class="course-list">
     <% @course.each do |course| %>
       <div class="col-md-4">
         <div class="card" style="width: 18rem;">
-          <%= image_tag course.picture, class:"card-img-top" %>
+          <%= image_tag course.picture, class:"card-img-top", size: "250" %>
           <div class="card-body">
-            <h5 class="card-title"><%= "#{course.name}" %></h5>
-            <p class="card-text">ADDRESS</p>
+            <h4 class="card-title"><%= link_to "#{course.name}", course_path(course.id), class: 'link-to-text-color' %></h4>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><%= "#{course.holes}" %></li>
+            <li class="list-group-item"><p>ADDRESS<p></li>
             <li class="list-group-item"><%= "Length: #{course.length}" %></li>
-            <li class="list-group-item"><%= "Difficulty:#{course.difficulty}" %></li>
+            <li class="list-group-item"><%= "Difficulty: #{course.difficulty}" %></li>
+            <li class="list-group-item">HOLES??</li>
           </ul>
-          <div class="card-body">
-            <%= link_to "Show Details", course_path(course.id) %>
-          </div>
         </div>
       </div>
       <br />
@@ -31,7 +26,6 @@
     <%end%>
   </div>
 </div>
-
 
 
 

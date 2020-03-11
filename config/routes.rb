@@ -34,14 +34,25 @@ Rails.application.routes.draw do
   
   #Add item to an order
   get "/order/:id", to: "order#new", as: "new_order"
+  post "order/item/:id", to: "order#create", as: "create_order"
 
   #Display all courses in a list 
   get "/course", to: "course#index", as: "courses"
+
+  #Add course to course list of current user
+  get "/course/add", to: "course#add", as: "add_course_to_list"
+
+  #Remove course from course list of current user
+  delete "course/:id", to: "profile_course#destroy", as: "profile_course_destroy"
 
   #Display individual course
   get "/course/:id", to: "course#show", as: "course"
 
   #Add photo to course
   patch "/course/:id", to: "course#update", as: "update_course"
+
+  #View profile page of current user 
+  get "/profile/", to: "profile#index", as: "profile"
+  get "/profile/courses", to: "profile#courses", as: "profile_courses"
 
 end

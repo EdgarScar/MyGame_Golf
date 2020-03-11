@@ -38,6 +38,19 @@ body {
    font-family: "Chango"; 
  }
 
+ h2 {
+  color: green;
+  font-family: "Chango"; 
+}
+
+ h3 {
+   font-family: "Permanent Marker", cursive;
+ }
+
+ h4 {
+  font-family: "Permanent Marker", cursive;
+}
+
  .btn-success {
    font-family: "Chango";
  }
@@ -78,6 +91,10 @@ body {
 
 .card-body {
   height: 100px;
+}
+
+.link-to-text-color { 
+  color: darkgreen; 
 }
 
 

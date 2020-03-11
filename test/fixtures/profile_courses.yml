@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  course: one
+  played: false
+  score: 1
+  rated: false
+  reviewed: false
+
+two:
+  user: two
+  course: two
+  played: false
+  score: 1
+  rated: false
+  reviewed: false

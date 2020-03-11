@@ -1,30 +1,45 @@
 <div class="shop-align">
-  <div class="shop-align">
     <br />
-    <h2><%= "#{@course.name}"%></h2>
   </div>
   <br />
   <br />
-      <div>
-        <p><%= image_tag @course.picture, class: 'img-thumbnail box', width: 120 if @course.picture.attached? %></p>
-        <p><%= "#{@course.description} | #{@course.holes}"%></p>
-        <p><%="Length: #{@course.length} | Difficulty:#{@course.difficulty}"%>
-        <p><%= "Price: 18 holes - #{@course.priceeighteen} | 9 holes - #{@course.pricenine}"%></p>
+  <div class="media col-sm">
+    <%= image_tag @course.picture, class: "align-self-start mr-1", size: "250" %>
+    <div class="media-body col-sm">
+      <h3 class="mt-0 text-center"><%="    #{@course.name} | #{@course.holes}" %></h3>
+      <p><%="    #{@course.description}" %></p>
+      <div class="d-flex justify-content-around">
+        <div><strong>Length: </strong><%="#{@course.length}" %></div>
+        <div><strong>Difficulty: </strong><%="#{@course.difficulty}" %></div>
+        <div><strong>Price: 18 holes -</strong> <%="#{number_to_currency @course.priceeighteen}"%><strong> / 9 holes - </strong><%="#{number_to_currency @course.pricenine}" %></div>
       </div>
+    </div>
   </div>
-  <%= link_to "Back to Courses", courses_path %>
+  <br />
+  
+  <% if user_signed_in? %>
+      <% if @can_add %> 
+          <div class="d-flex justify-content-center"><%= link_to "Add to \"My Courses\" list", add_course_to_list_path(id: @course)%></div>
+      <% else %> 
+          <div class="d-flex justify-content-center"><%= link_to "Remove from \"My Courses\" list", profile_course_destroy_path(@course), method: "delete"%></div>     
+      <% end %> 
+  <% end %>
+  <br />
+    <div class="d-flex justify-content-center"><%= link_to "Back to Courses", courses_path %></div>
 
 
-<%= form_with model: @course, :url => update_course_path do |form| %>
+  <br />
+  <br />
+  <%= form_with model: @course, :url => update_course_path do |form| %>
 
- <div class="field">
-  <%= form.label(:picture, "Course Photo:") %>
-  <%= form.file_field :picture, accept: 'image/png, image/gif, image/png, image/jpg' %>
-  </div>
+  <div class="field">
+    <%= form.label(:picture, "Course Photo:") %>
+    <%= form.file_field :picture, accept: 'image/png, image/gif, image/png, image/jpg' %>
+    </div>
 
-  <%= form.submit "Submit"%>
+    <%= form.submit "Submit"%>
 
-<% end %>
+  <% end %>
 
 </div>
 
