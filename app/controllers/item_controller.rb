@@ -30,6 +30,7 @@ class ItemController < ApplicationController
     @item.age = params[:item][:age]
     @item.condition = Item.conditions[params[:item][:conditon]]
     @item.price = params[:item][:price]
+    @item.sold = false
     @item.picture.attach(params[:item][:picture])
 
     if @item.valid? && @item.save

@@ -13,22 +13,25 @@
   <br />
   <div class="list">
     <% @item.each do |item| %>
-      <div class="d-flex justify-content-center col-md-4">
-        <div class="card" style="width: 18rem;">
-          <%= link_to image_tag(item.picture, class:"card-img-top", size: "250"), item_path(item.id) %>
-          <div class="card-body">
-            <h4 class="card-title"><%= link_to "#{item.description}", item_path(item.id), class: 'link-to-text-color' %></h4>
+      <%if item.sold == false%>
+        <div class="d-flex justify-content-center col-md-4">
+          <div class="card" style="width: 18rem;">
+            <%= link_to image_tag(item.picture, class:"card-img-top", size: "250"), item_path(item.id) %>
+            <div class="card-body">
+              <h4 class="card-title"><%= link_to "#{item.description}", item_path(item.id), class: 'link-to-text-color' %></h4>
+              <h5 class="card-title"><%="#{number_to_currency item.price}"%></h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><%= "Category: #{item.sub_category.name}" %></li>
+              <li class="list-group-item"><%= "#{item.brand} - #{item.model}" %></li>
+              <li class="list-group-item"><%= "Age: #{item.age} | Condition:#{item.condition}" %></li>
+              <li class="list-group-item"><%= link_to "Show Details", item_path(item.id) %></li>
+            </ul>
           </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><%= "Category: #{item.sub_category.name}" %></li>
-            <li class="list-group-item"><%= "#{item.brand} - #{item.model}" %></li>
-            <li class="list-group-item"><%= "Age: #{item.age} | Condition:#{item.condition}" %></li>
-            <li class="list-group-item"><%= link_to "Show Details", item_path(item.id) %></li>
-          </ul>
+          <br />
+          <br />
         </div>
-        <br />
-        <br />
-      </div>
+      <%end%>
     <%end%>
   </div>
 </div>

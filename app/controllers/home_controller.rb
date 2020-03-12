@@ -8,27 +8,28 @@ class HomeController < ApplicationController
       @report = JSON.parse(@response.body)
       # getting all articles in a string article 
       @article = @report["articles"]
-      # empty list which will contain all trending news 
-      #results = [] 
     end   
 
     def address
       @address = Address.new()
+      @user.addressable_type = params.keys.first.capitalize
+      @user.addressable_id = params[params.keys.first]
     end 
 
     def create 
       @address = Address.new()
-      @address.addressable_id = current_user.id
+      @address.addressable_type = params[:address][:addressable_type]
+      @address.addressable_id = params[:address][:addressable_id]
       @address.number = params[:address][:number]
       @address.street = params[:address][:street]
       @address.suburb = params[:address][:city]
       @address.state = params[:address][:state]
       @address.country = params[:address][:country]
       @address.postcode = params[:address][:postcode]
-
-      if @address.valid? && @address.save
+      if @address.save
         redirect_to home_path
       else
+        flash[:alert] = "Opps, something went wrong when creating your review"
         redirect_to items_path    
       end 
     end 

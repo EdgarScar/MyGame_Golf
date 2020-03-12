@@ -39,6 +39,10 @@ skip_before_action :verify_authenticity_token, only: [:webhook]
     @order.item_id = item_id
     @order.save
 
+    @item = Item.find(item_id)
+    @item.sold = true
+    @item.save
+
     render plain: "Success"
   end 
 

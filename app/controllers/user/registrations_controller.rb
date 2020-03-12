@@ -12,6 +12,7 @@ class User::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
+    @user.display_name = params[:user][:display_name]
     @user.picture.attach(params[:user][:picture])
   end
 

@@ -59,5 +59,10 @@ Rails.application.routes.draw do
   get "/reviews/new", to: "reviews#new", as:"new_review"
   post "/reviews", to: "reviews#create"
 
+  #Add Admin pages
+  get "/admin", to: "admin#index", as: "admin"
+
+  #Admin can delete users 
+  delete "/admin/:id", to: "admin#destroy", as: "destroy_user"
 
 end
