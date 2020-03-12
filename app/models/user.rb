@@ -11,4 +11,5 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :address
   has_many :profile_courses
   has_many :courses, through: :profile_courses
+  has_many :reviews, as: :rateable
 end

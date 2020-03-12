@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_11_025509) do
+ActiveRecord::Schema.define(version: 2020_03_12_051127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 2020_03_11_025509) do
     t.decimal "price", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "sold"
     t.index ["sub_category_id"], name: "index_items_on_sub_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
@@ -108,6 +109,18 @@ ActiveRecord::Schema.define(version: 2020_03_11_025509) do
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_profile_courses_on_course_id"
     t.index ["user_id"], name: "index_profile_courses_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "rateable_type"
+    t.bigint "rateable_id"
+    t.bigint "user_id"
+    t.integer "rating"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_reviews_on_rateable_type_and_rateable_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "sub_categories", force: :cascade do |t|
@@ -140,5 +153,6 @@ ActiveRecord::Schema.define(version: 2020_03_11_025509) do
   add_foreign_key "orders", "users"
   add_foreign_key "profile_courses", "courses"
   add_foreign_key "profile_courses", "users"
+  add_foreign_key "reviews", "users"
   add_foreign_key "sub_categories", "categories"
 end

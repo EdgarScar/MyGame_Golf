@@ -9,7 +9,10 @@
         <%= image_tag course.picture, class: "align-self-start mr-1", size: "250" %>
         <div class="media-body col-sm">
             <h3 class="mt-0 mb-1"><%= "#{course.name}"%></h3>
-            USER REVIEW AND RATING
+              <% @reviews.each do |review| %>
+                <%= "Your rating: #{review.rating}"%>
+                <%= "Your comments: #{review.comments}"%>
+              <% end %>
           <div>
             <%= link_to "Show Course Details", course_path(course.id) %>
           </div>

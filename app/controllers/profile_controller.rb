@@ -1,13 +1,14 @@
 class ProfileController < ApplicationController
 
   def index
-    @name = current_user[:first_name]
+    @user = User.find(current_user.id)
   end 
 
 
 
   def courses
     @courses = current_user.courses
+    @reviews = current_user.reviews
   end 
 
   def listings

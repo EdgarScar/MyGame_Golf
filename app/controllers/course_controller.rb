@@ -8,7 +8,8 @@ class CourseController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    @can_add = !ProfileCourse.contains?(current_user, @course) 
+    @can_add = !ProfileCourse.contains?(current_user, @course)  
+    @reviews = @course.reviews
   end 
 
   def update

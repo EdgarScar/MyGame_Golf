@@ -28,6 +28,25 @@
   <br />
     <div class="d-flex justify-content-center"><%= link_to "Back to Courses", courses_path %></div>
 
+<hr />
+<div> 
+  <h4>Player's Reviews</h4>
+  <% if user_signed_in? %>
+    <%= link_to "Add Review", new_review_path(course: @course), class: "btn btn-success"%>
+  <% end %>
+    <%if @reviews%>
+      <% @reviews.each do |review|%>
+    <hr />
+      <div>
+        <p class="rating"><%= "Rated: #{review.rating} out of 5"%></p>
+        <p><%="User: #{review.user_id}"%> 
+        <p><%="Review: #{review.comment}" %></p>
+      </div>
+    <hr />
+      <% end %>
+    <% end %>
+  </div>
+  <hr />
 
   <br />
   <br />

@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   
   #Add item to an order
   get "/order/:id", to: "order#new", as: "new_order"
-  post "order/:id", to: "order#create", as: "create_order"
+  post "/order/webhook", to: "order#webhook"
 
   #Display all courses in a list 
   get "/course", to: "course#index", as: "courses"
@@ -54,5 +54,10 @@ Rails.application.routes.draw do
   #View profile page of current user 
   get "/profile/", to: "profile#index", as: "profile"
   get "/profile/courses", to: "profile#courses", as: "profile_courses"
+
+  #Add add review of a user or a course
+  get "/reviews/new", to: "reviews#new", as:"new_review"
+  post "/reviews", to: "reviews#create"
+
 
 end
