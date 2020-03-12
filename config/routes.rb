@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   root to: "home#index", as: "home"
 
   #Add address to User
-  get "/home/address", to: "home#address", as: "new_address"
-  post "/home", to: "home#create", as: "create_address"
+  get "/user/:id", to: "home#address", as: "new_address"
+  post "/user/:id", to: "home#create", as: "create_address"
 
   #Show all items for sale/rent in the shop but use Items Controller
   get "/item", to: "item#index", as: "items"

@@ -12,12 +12,13 @@ class User::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
+    #
     @user.display_name = params[:user][:display_name]
     @user.picture.attach(params[:user][:picture])
   end
 
   def after_sign_up_path_for(user)
-    new_address_path
+    create_address_path(current_user.id)
   end
 
   # GET /resource/edit

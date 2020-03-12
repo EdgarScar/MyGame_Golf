@@ -1,0 +1,25 @@
+<br />
+<h4 class="d-flex justify-content-center"><%= "Write a review"%></h4>
+<br />
+<div class="d-flex flex-column bd-highlight align-items-center mb-3">
+  <div class="p-2 bd-highlight">
+    <%= form_with model: @review do |form| %>
+      <%= form.hidden_field :rateable_type, value: @review.rateable_type %>
+      <%= form.hidden_field :rateable_id, value: @review.rateable_id %>
+      <p>
+        <%= label :rating, "Rating" %>
+        <%= form.number_field :rating, min: 1, max: 5, required: true %>
+      </p>
+  </div>
+  <div class="p-2 bd-highlight">
+      <p>
+        <%= label :comment, "Comments"%>
+        <%= form.text_area :comment %>
+      </p>
+  </div>
+  <div class="d-flex justify-content-between">
+        <%= form.submit "Submit Review", class: 'btn btn-success' %>
+        <%= link_to "Cancel", :back, class: "btn btn-danger "%>
+  </div>
+    <% end %>
+</div>

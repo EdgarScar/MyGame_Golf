@@ -1,0 +1,32 @@
+<br />
+<%if current_user.email == "admin@gmail.com"%>
+  <h3>Administrator Console</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Display</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Email</th>
+        <th scope="col">Delete User</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |user|%>
+      <tr>
+        <th scope="row"><%=user.id%></th>
+        <td><%=user.display_name%></td>
+        <td><%=user.first_name%></td>
+        <td><%=user.last_name%></td>
+        <td><%=user.email%></td>
+        <td><%= link_to "Delete", destroy_user_path(user.id), method: :delete%>
+      </tr>
+    <%end%>
+    </tbody>
+  </table>
+<% else %>
+   <p><%= alert%></p>
+<%end%>
+
+

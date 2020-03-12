@@ -12,8 +12,8 @@ class HomeController < ApplicationController
 
     def address
       @address = Address.new()
-      @user.addressable_type = params.keys.first.capitalize
-      @user.addressable_id = params[params.keys.first]
+      @address.addressable_type = params.keys.first.capitalize
+      @address.addressable_id = params[params.keys.first]
     end 
 
     def create 
