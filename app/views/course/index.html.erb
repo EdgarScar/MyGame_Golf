@@ -2,7 +2,6 @@
     <br />
     <h2>Course Catelog</h2>
     <br/>
-    <h4>Search:......</h4>
   <br />
   <br />
   <div class="list">
@@ -14,7 +13,6 @@
             <h4 class="card-title"><%= link_to "#{course.name}", course_path(course.id), class: 'link-to-text-color' %></h4>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><p>ADDRESS<p></li>
             <li class="list-group-item"><%= "Length: #{course.length}" %></li>
             <li class="list-group-item"><%= "Difficulty: #{course.difficulty}" %></li>
             <% if course.holes == true %>

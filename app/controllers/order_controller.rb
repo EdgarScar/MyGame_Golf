@@ -1,6 +1,7 @@
 class OrderController < ApplicationController
 skip_before_action :verify_authenticity_token, only: [:webhook]
 
+#Takes the selected item and transfers the data to Stripe for purchase 
   def new
     @item = Item.find(params[:item_id])
     @session = Stripe::Checkout::Session.create(
@@ -22,9 +23,12 @@ skip_before_action :verify_authenticity_token, only: [:webhook]
     )
   end 
 
+#Action to render a successful purchase page and link back to market
   def complete
   end 
 
+#Webhook allows data to be passed from Stripe after successful purchase and 
+#   a the item and user are saved to the data base as a new order
   def webhook
     payment_id = params[:data][:object][:payment_intent]
     payment = Stripe::PaymentIntent.retrieve(payment_id)

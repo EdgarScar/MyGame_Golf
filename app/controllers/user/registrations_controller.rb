@@ -18,7 +18,7 @@ class User::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(user)
-    create_address_path(current_user.id)
+    profile_path
   end
 
   # GET /resource/edit

@@ -1,12 +1,13 @@
 class ReviewsController < ApplicationController
 
+#Generates a form for a User to write a review
   def new
     @review = Review.new
     @review.rateable_type = params.keys.first.capitalize
     @review.rateable_id = params[params.keys.first]
   end 
 
-
+#Saves the new review with the params from the form
   def create 
     @review = Review.new
     @review.rateable_type = params[:review][:rateable_type]

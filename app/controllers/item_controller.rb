@@ -1,11 +1,13 @@
 class ItemController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
+#Saves all Items to instance variable unless search by Subcategory is entered
   def index
     @item = Item.search(params[:sub_categories])
     @sub_categories = SubCategory.all
   end 
 
+#Creates form for new item creation in the marketplace 
   def new
     @item = Item.new
     #Variable for all categories to be selected in form
@@ -14,15 +16,13 @@ class ItemController < ApplicationController
     @sub_categories = SubCategory.all.map{ |sub_category| [sub_category.name, sub_category.id]}
     #Creating labels for enum of :conditon
     @conditions = Item.conditions.map { |item| item }
-  end 
+  end
 
+#Saves new instance of Item in database and display in marketplace
   def create 
     @item = Item.new()
     @item.user = current_user
-    #Would like the boolean of rent to determine whether to display duration
     @item.rent = params[:item][:rent]
-    # @item.duration = params[:item][:duration]
-    #Category needs to determine which sub categories are displayed
     @item.sub_category_id = params[:item][:sub_category_id]
     @item.description = params[:item][:description]
     @item.brand = params[:item][:brand]
@@ -40,16 +40,19 @@ class ItemController < ApplicationController
     end 
   end 
 
+#Individual Item found via ID, saved to instance variable, and displayed 
   def show 
     @item = Item.find(params[:id])
   end 
 
+#If current user owns the item, creates an option to remove it from the marketplace 
   def destroy
     description = Item.find(params[:id]).description
     Item.destroy(params[:id])
     redirect_to items_path
   end
 
+#Allows params of sub_category to be accessable for purpose of search 
   private
   def item_params
     params.require(:item).permit(:sub_category_id, :search)

@@ -1,21 +1,21 @@
 class HomeController < ApplicationController
+#Gem required for API
   require "httparty"
 
+#API data retrieved, converted to JSON format and saved to instance variable for display
     def index
-      #@auth = "Bearer 12e692d8e7254efa8cf6276ea99736b0"
       @response = HTTParty.get("http://newsapi.org/v2/top-headlines?category=sports&q=golf&apiKey=12e692d8e7254efa8cf6276ea99736b0")
-      # fetching data in json format 
       @report = JSON.parse(@response.body)
-      # getting all articles in a string article 
       @article = @report["articles"]
     end   
-
+#Create new address form for User or Course **Requires additional work to function as intended
     def address
       @address = Address.new()
       @address.addressable_type = params.keys.first.capitalize
       @address.addressable_id = params[params.keys.first]
     end 
 
+#Saves a new address for User or Course
     def create 
       @address = Address.new()
       @address.addressable_type = params[:address][:addressable_type]
@@ -33,6 +33,5 @@ class HomeController < ApplicationController
         redirect_to items_path    
       end 
     end 
-
-
+    
 end

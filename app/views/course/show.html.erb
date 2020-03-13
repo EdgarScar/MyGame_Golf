@@ -57,16 +57,16 @@
 
   <br />
   <br />
-  <%= form_with model: @course, :url => update_course_path do |form| %>
 
-  <div class="field">
-    <%= form.label(:picture, "Course Photo:") %>
-    <%= form.file_field :picture, accept: 'image/png, image/gif, image/png, image/jpg' %>
-    </div>
-
-    <%= form.submit "Submit"%>
-
-  <% end %>
+  <% if current_user.email == "admin@gmail.com"%>
+    <%= form_with model: @course, :url => update_course_path do |form| %>
+    <div class="field">
+      <%= form.label(:picture, "Course Photo:") %>
+      <%= form.file_field :picture, accept: 'image/png, image/gif, image/png, image/jpg' %>
+      </div>
+      <%= form.submit "Submit"%>
+    <% end %>
+  <%end%>
 
 </div>
 

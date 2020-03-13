@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   attr_accessor :current_user
 
 
-
+#Method to filter the search parameters if a sub_category is selected. If not, all items are displayed
   def self.search(search)
     if search 
       self.where(sub_category_id: search)
