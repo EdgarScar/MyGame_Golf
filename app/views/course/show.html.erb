@@ -4,7 +4,7 @@
   <br />
   <br />
   <div class="media col-sm">
-    <%= image_tag @course.picture, class: "align-self-start mr-1", size: "250" %>
+    <%= image_tag @course.picture, class: "align-self-start mr-1", size: "250" if course.picture.attached? %>
     <div class="media-body col-sm">
       <h3 class="mt-0 text-center"><%="    #{@course.name}"%></h3>
       <br />
