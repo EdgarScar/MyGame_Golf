@@ -4,7 +4,7 @@
 <br />
   <div class="row">
     <div class="col-md-4">
-      <%= image_tag current_user.picture, class:"card-img-top", size: "200" %>
+      <%= image_tag current_user.picture, class:"card-img-top", size: "200" if current_user.picture.attached? %>
     </div>
     <div class="col-6">
       <%="Display Name: #{current_user.display_name}"%>

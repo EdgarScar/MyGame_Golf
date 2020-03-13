@@ -17,7 +17,11 @@
             <li class="list-group-item"><p>ADDRESS<p></li>
             <li class="list-group-item"><%= "Length: #{course.length}" %></li>
             <li class="list-group-item"><%= "Difficulty: #{course.difficulty}" %></li>
-            <li class="list-group-item">HOLES??</li>
+            <% if course.holes == true %>
+              <li class="list-group-item">18 Holes</li>
+            <% else %>
+              <li class="list-group-item">9 Holes</li>
+            <% end %>
           </ul>
         </div>
         <br />
