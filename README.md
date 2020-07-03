@@ -24,7 +24,7 @@ https://ca-mygolf.herokuapp.com/
 
 https://github.com/EdgarScar/MyGame_Golf 
 
-## Describe the following parts of the app:
+## Parts of the app:
 - Purpose
 
   - The purpose of the MyGolf application is to provide a one stop shop for everything golf related that is affordable and socially driven in order to foster better connections between people in local communities. It will offer a platform for anyone who has an interest in the sport, whether beginner or advanced, to obtain any necessary equipment at a reasonable price and hassle free. It will also bring people from all over Australia together on a platform that is geared toward fostering community spirit, both online and on the course. MyGolf will strive to promote the game in local communities with the purpose of bringing people together through the sport. 
@@ -77,7 +77,7 @@ https://www.clearinghouseforsport.gov.au/__data/assets/pdf_file/0009/821988/Stat
     - Heroku 
     - Github 
 
-## User stories for the app
+## User stories 
 ### **Epic**
     As a golfer,
 
@@ -236,7 +236,7 @@ https://www.clearinghouseforsport.gov.au/__data/assets/pdf_file/0009/821988/Stat
           
         so I can improve my game and support my local community.
  
-## Explanation of High Level Components 
+## High Level Components 
 
   - Buy/Rent/Sell
 
@@ -283,7 +283,7 @@ https://www.clearinghouseforsport.gov.au/__data/assets/pdf_file/0009/821988/Stat
 
     - Devise gem is used for authentication purposes within the MyGolf app. The User model is created using the devise gem to create all the user views already established by devise. The user controller is also established through devise to manage control over the entity. The devise methods, such as current_user and user_signed_in?, are used to check whether a certain user is logged in and the content and information is filtered accordingly. This is most relevant for the administration page, from which only the current user with the administrator's email address will be able to view the data.
 
-## Models in terms of their relationships (active record associations) they have with each other
+## Models in terms of their relationships (active record associations)
 
 The User model was created using Devise to enable the built in authentication methods to be used throughout the app. The User model has many Orders, Items and Profile_Courses. It has many Courses through Profile_Courses and many Reviews through the polymorphic Review model. It has only one Address through the Address polymorphic model and only one Image. 
 
@@ -303,7 +303,7 @@ An instance of the Profile_Course model belongs to both the User and Course mode
 
 The Address model, as a polymorphic model, only belongs to itself. Users and Courses have one address, but an instance of the Address model does not belong to any particular model. 
 
-## Database relations to be implemented
+## Database relations 
 
 A Category has many Subcategories, and Subcategories belong to many items. This is why the Category foreign key is stored in the Subcategory model. Each item in the marketplace will have one Category and one Subcategory. It will only have a Category through the Subcategory. As it is a many to one relationship, the Subcategory foreign key will be stored in the Item model instance. 
 
