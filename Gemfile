@@ -72,6 +72,6 @@ gem "stripe", "~> 5.17"
 
 gem "aws-sdk-s3", "~> 1.60"
 
-gem "httparty", "~> 0.18.0"
+gem "httparty", "~> 0.21.0"
 
 gem "ultrahook", "~> 0.1.5"
